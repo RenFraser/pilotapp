@@ -25,3 +25,5 @@ ios
 android
 
 build-*
+
+.env
