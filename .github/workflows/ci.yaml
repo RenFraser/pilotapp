@@ -70,7 +70,7 @@ jobs:
 
       # TODO: switch to just "npm outdated" after aws js sdk v3 bedrock issue is fixed
       # https://github.com/aws/aws-sdk-js-v3/issues/6269
-      - run: npm outdated --json | jq 'del(.["@aws-sdk/client-bedrock-runtime"]) | length == 0'
+      - run: npm outdated --json | jq -e 'del(.["@aws-sdk/client-bedrock-runtime"]) | length == 0'
 
   build:
     runs-on: ubuntu-latest
