@@ -4,3 +4,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+
+
+# TODO: npm - ensure that I keep bedrock pinned until they fix the issue
+#       https://github.com/aws/aws-sdk-js-v3/issues/6269

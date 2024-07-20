@@ -53,9 +53,28 @@ jobs:
           NODE_AUTH_TOKEN: ${{ github.token }}
       - run: npm run format
 
+  outdated:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: npm
+          registry-url: "https://npm.pkg.github.com"
+      - run: npm ci
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
+
+      # TODO: switch to just "npm outdated" after aws js sdk v3 bedrock issue is fixed
+      # https://github.com/aws/aws-sdk-js-v3/issues/6269
+      - run: npm outdated --json | jq 'del(.["@aws-sdk/client-bedrock-runtime"]) | length == 0'
+
   build:
     runs-on: ubuntu-latest
-    needs: [security, lint, format]
+    needs: [security, lint, format, outdated]
     steps:
       - name: Setup repo
         uses: actions/checkout@v3
