@@ -4,5 +4,11 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-# TODO: npm - ensure that I keep bedrock pinned until they fix the issue
-#       https://github.com/aws/aws-sdk-js-v3/issues/6269
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      # TODO: npm - ensure that I keep bedrock pinned until they fix the issue
+      #       https://github.com/aws/aws-sdk-js-v3/issues/6269
+      - dependency-name: "@aws-sdk/client-bedrock-runtime"
