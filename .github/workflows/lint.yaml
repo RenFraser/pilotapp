@@ -13,10 +13,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 18.x
           cache: npm
           registry-url: "https://npm.pkg.github.com"
-      - run: npm ci --ignore-scripts
+      - run: npm ci
         shell: bash
         env:
           NODE_AUTH_TOKEN: ${{ github.token }}
@@ -29,10 +29,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 18.x
           cache: npm
           registry-url: "https://npm.pkg.github.com"
-      - run: npm ci --ignore-scripts
+      - run: npm ci
         shell: bash
         env:
           NODE_AUTH_TOKEN: ${{ github.token }}
@@ -45,10 +45,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 18.x
           cache: npm
           registry-url: "https://npm.pkg.github.com"
-      - run: npm ci --ignore-scripts
+      - run: npm ci
         shell: bash
         env:
           NODE_AUTH_TOKEN: ${{ github.token }}
