@@ -11,15 +11,10 @@ import {
 } from "tamagui";
 
 import React, { useEffect, useState } from "react";
-import {
-  BedrockRuntimeClient,
-  InvokeModelCommand,
-  InvokeModelCommandOutput,
-} from "@aws-sdk/client-bedrock-runtime";
 
-export const CLAUDE_MAX_TOKENS = 4096;
-export const APPLICATION_JSON = "application/json";
-export const BEDROCK_VERSION = "bedrock-2023-05-31";
+// export const CLAUDE_MAX_TOKENS = 4096;
+// export const APPLICATION_JSON = "application/json";
+// export const BEDROCK_VERSION = "bedrock-2023-05-31";
 
 export default function HomeScreen() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,50 +24,52 @@ export default function HomeScreen() {
 
   // FIXME: DO NOT STORE SECRETS IN .ENV FILES - THEY ARE COMPILED AND PUBLICLY ACCESSIBLE
   //        USE A BETTER STORAGE MECHANISM. EXPO DOCS ARE HELPFUL.
-  const client = new BedrockRuntimeClient({
-    region: process.env.EXPO_PUBLIC_AWS_REGION_NAME || "",
-    credentials: {
-      accessKeyId: process.env.EXPO_PUBLIC_AWS_ACCESS_KEY_ID || "",
-      secretAccessKey: process.env.EXPO_PUBLIC_AWS_SECRET_ACCESS_KEY || "",
-    },
-  });
+  // FIXME: bedrock exception causes the splash screen to indefinitely load when creds & region aren't' accessible (eas cloud build) - I need to use an error view
+  // const client = new BedrockRuntimeClient({
+  //   region: process.env.EXPO_PUBLIC_AWS_REGION_NAME || "",
+  //   credentials: {
+  //     accessKeyId: process.env.EXPO_PUBLIC_AWS_ACCESS_KEY_ID || "",
+  //     secretAccessKey: process.env.EXPO_PUBLIC_AWS_SECRET_ACCESS_KEY || "",
+  //   },
+  // });
 
   // TODO: consider switching to claude instant, or something cheap
-  const HAIKU_MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
+  // const HAIKU_MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
 
   // TODO: optimise claude's message so that it's given a template and provides only the filled responses.
-  const body = JSON.stringify({
-    messages: [
-      {
-        role: "user",
-        content: question,
-      },
-    ],
-    anthropic_version: BEDROCK_VERSION,
-    max_tokens: CLAUDE_MAX_TOKENS,
-    system: "", // TODO:
-  });
+  // const body = JSON.stringify({
+  //   messages: [
+  //     {
+  //       role: "user",
+  //       content: question,
+  //     },
+  //   ],
+  //   anthropic_version: BEDROCK_VERSION,
+  //   max_tokens: CLAUDE_MAX_TOKENS,
+  //   system: "", // TODO:
+  // });
 
-  const params = {
-    modelId: HAIKU_MODEL_ID,
-    contentType: APPLICATION_JSON,
-    accept: APPLICATION_JSON,
-    body,
-  };
+  // const params = {
+  //   modelId: HAIKU_MODEL_ID,
+  //   contentType: APPLICATION_JSON,
+  //   accept: APPLICATION_JSON,
+  //   body,
+  // };
 
-  const request = new InvokeModelCommand(params);
+  // const request = new InvokeModelCommand(params);
 
   const sendToBedrock = async () => {
     console.log("in sending...");
     try {
       console.log("send now");
-      const response: InvokeModelCommandOutput = await client.send(request);
+      // const response: InvokeModelCommandOutput = await client.send(request);
 
-      const decodedResponse = new TextDecoder().decode(response.body);
+      // const decodedResponse = new TextDecoder().decode(response.body);
 
-      const reply = JSON.parse(decodedResponse || "{}");
-      const claudesReply = reply.content[0].text;
-      setSummary(claudesReply);
+      // const reply = JSON.parse(decodedResponse || "{}");
+      // const claudesReply = reply.content[0].text;
+      // setSummary(claudesReply);
+      setSummary("test");
     } catch (error) {
       console.error(error);
     } finally {
