@@ -1,7 +1,7 @@
 appId: com.henryfraser.pilotapp
 ---
 - launchApp
-- assertVisible: 'Pilot App'
-- assertVisible: 'Question: '
-- assertVisible: 'Summary: '
-- assertVisible: 'Pages: '
+- assertVisible: "Pilot App"
+- assertVisible: "Question: "
+- assertVisible: "Summary: "
+- assertVisible: "Pages: "
