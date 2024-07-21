@@ -76,7 +76,7 @@ jobs:
         run: npm ci
 
       - name: Build app
-        run: eas build --non-interactive --platform ios
+        run: eas build --non-interactive --platform ios --profile development
 
   dependabot:
     permissions: write-all
