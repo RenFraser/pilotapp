@@ -10,6 +10,14 @@
         "simulator": true
       }
     },
+    "build-and-maestro-test": {
+      "withoutCredentials": true,
+      "config": "build-and-maestro-test.yml",
+      "ios": {
+        "simulator": true,
+        "image": "latest"
+      }
+    },
     "preview": {
       "distribution": "internal"
     },
