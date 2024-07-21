@@ -27,11 +27,13 @@ export default function HomeScreen() {
   const [summary, setSummary] = useState<string>("");
   const [pages, setPages] = useState<number[]>([]);
 
+  // FIXME: DO NOT STORE SECRETS IN .ENV FILES - THEY ARE COMPILED AND PUBLICLY ACCESSIBLE
+  //        USE A BETTER STORAGE MECHANISM. EXPO DOCS ARE HELPFUL.
   const client = new BedrockRuntimeClient({
-    region: process.env.AWS_REGION_NAME || "",
+    region: process.env.EXPO_PUBLIC_AWS_REGION_NAME || "",
     credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
+      accessKeyId: process.env.EXPO_PUBLIC_AWS_ACCESS_KEY_ID || "",
+      secretAccessKey: process.env.EXPO_PUBLIC_AWS_SECRET_ACCESS_KEY || "",
     },
   });
 
