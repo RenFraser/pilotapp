@@ -53,7 +53,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ github.token }}
       - run: npm run format
 
-
   dependabot:
     permissions: write-all
     runs-on: ubuntu-latest
