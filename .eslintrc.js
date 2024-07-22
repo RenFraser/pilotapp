@@ -4,4 +4,5 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
   },
+  ignores: ["/.expo", "node_modules"],
 };
