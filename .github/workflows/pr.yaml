@@ -54,7 +54,7 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
-    needs: [build]
+    needs: [security, lint, format]
     steps:
       - name: Dependabot metadata
         id: metadata
