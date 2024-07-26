@@ -6,8 +6,9 @@
  * You can remove the `reset-project` script from package.json and safely delete this file after running it.
  */
 
-const fs = require("fs");
-const path = require("path");
+// TODO: convert these to imports or delete this file
+const fs = require("fs"); // eslint-disable-line @typescript-eslint/no-require-imports
+const path = require("path"); // eslint-disable-line @typescript-eslint/no-require-imports
 
 const root = process.cwd();
 const oldDirPath = path.join(root, "app");

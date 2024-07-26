@@ -77,12 +77,6 @@ export default function HomeScreen() {
     }
   };
 
-  const unusedVariable = 'This variable is never used';
-
-  function testFunction() {
-    console.log("Hello World");
-  }
-
   useEffect(() => {
     if (loading) {
       const timer = setTimeout(() => setLoading(false), 2000);
