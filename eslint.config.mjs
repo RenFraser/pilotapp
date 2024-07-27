@@ -8,6 +8,7 @@ import depend from "eslint-plugin-depend";
 import pluginPromise from "eslint-plugin-promise";
 import perfectionist from "eslint-plugin-perfectionist";
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import sonarjs from "eslint-plugin-sonarjs";
 
 // TODO: add react recommended
 export default [
@@ -18,6 +19,7 @@ export default [
   pluginPromise.configs["flat/recommended"], // enforce best practices when using promises
   perfectionist.configs["recommended-natural"], // sorts all collections. Arrays, props, imports etc.
   eslintPluginUnicorn.configs["flat/recommended"],
+  sonarjs.configs.recommended,
   {
     languageOptions: {
       globals: {
