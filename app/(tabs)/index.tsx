@@ -58,7 +58,7 @@ export default function HomeScreen(): ReactElement {
       // const messages = response.output?.message?.content ?? [];
       // const msg = messages.length > 0 ? messages[0]?.text : "UNKNOWN";
       // setSummary(msg ?? "UNKNOWN");
-      setSummary("TODO");
+      setSummary("Hello Pip!");
     } catch (error) {
       console.error(error);
     } finally {
