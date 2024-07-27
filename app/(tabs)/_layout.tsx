@@ -7,11 +7,14 @@ import React from "react";
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  const tint =
+    (colorScheme ?? "light") === "dark" ? Colors.dark.tint : Colors.light.tint;
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveTintColor: tint,
       }}
     >
       <Tabs.Screen
