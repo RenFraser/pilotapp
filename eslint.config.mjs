@@ -28,6 +28,7 @@ export default [
       expo,
     },
     rules: {
+      "@typescript-eslint/switch-exhaustiveness-check": "error",
       "prettier/prettier": "error",
       "expo/no-env-var-destructuring": "error",
       "expo/no-dynamic-env-var": "error",
