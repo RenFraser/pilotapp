@@ -142,5 +142,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build app and run E2E tests
+      - name: Publish Update
         run: eas update --auto
