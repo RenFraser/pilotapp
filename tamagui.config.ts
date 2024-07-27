@@ -1,5 +1,4 @@
 import { config } from "@tamagui/config/v3";
-
 import { createTamagui } from "tamagui";
 const tamaguiConfig = createTamagui(config);
 // this makes typescript properly type everything based on the config

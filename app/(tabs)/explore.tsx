@@ -1,18 +1,17 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, Image, Platform } from "react-native";
-
 import { Collapsible } from "@/components/Collapsible";
 import { ExternalLink } from "@/components/ExternalLink";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Image, Platform, StyleSheet } from "react-native";
 
 export default function TabTwoScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
+      headerBackgroundColor={{ dark: "#353636", light: "#D0D0D0" }}
       headerImage={
-        <Ionicons size={310} name="code-slash" style={styles.headerImage} />
+        <Ionicons name="code-slash" size={310} style={styles.headerImage} />
       }
     >
       <ThemedView style={styles.titleContainer}>
@@ -112,8 +111,8 @@ export default function TabTwoScreen() {
 
 const styles = StyleSheet.create({
   headerImage: {
-    color: "#808080",
     bottom: -90,
+    color: "#808080",
     left: -35,
     position: "absolute",
   },

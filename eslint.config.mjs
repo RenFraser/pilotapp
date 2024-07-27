@@ -6,6 +6,7 @@ import tseslint from "typescript-eslint";
 import globals from "globals";
 import depend from "eslint-plugin-depend";
 import pluginPromise from "eslint-plugin-promise";
+import perfectionist from "eslint-plugin-perfectionist";
 
 // TODO: add react recommended
 export default [
@@ -14,6 +15,7 @@ export default [
   react.configs.flat.recommended,
   depend.configs["flat/recommended"], // prevents using redundant 3rd party libs for built-ins or popular libs
   pluginPromise.configs["flat/recommended"], // enforce best practices when using promises
+  perfectionist.configs["recommended-natural"], // sorts all collections. Arrays, props, imports etc.
   {
     ignores: [".expo", "**/node_modules"],
     languageOptions: {

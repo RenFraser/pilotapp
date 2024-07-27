@@ -1,16 +1,15 @@
+import React, { useEffect, useState } from "react";
 import {
   Button,
+  Card,
+  Form,
+  H2,
   Input,
+  Paragraph,
+  Spinner,
   XStack,
   YStack,
-  Form,
-  Spinner,
-  Card,
-  H2,
-  Paragraph,
 } from "tamagui";
-
-import React, { useEffect, useState } from "react";
 // import {
 //   BedrockRuntimeClient,
 //   ConverseCommand,
@@ -80,22 +79,22 @@ export default function HomeScreen() {
 
   return (
     <XStack
-      marginTop={"$10"}
-      height={"100%"}
-      fullscreen
-      padding="$2"
       alignSelf="center"
+      fullscreen
+      height={"100%"}
+      marginTop={"$10"}
+      padding="$2"
     >
       <YStack
-        flex={1}
-        gap="$4"
-        height={"100%"}
-        borderWidth={2}
         borderColor="$color"
         borderRadius="$4"
-        padding="$2"
-        marginTop={"$2"}
+        borderWidth={2}
+        flex={1}
         fullscreen
+        gap="$4"
+        height={"100%"}
+        marginTop={"$2"}
+        padding="$2"
       >
         <Card height={"80%"}>
           <Card.Header padded>
@@ -115,11 +114,11 @@ export default function HomeScreen() {
         >
           <XStack alignItems="center" gap="$2">
             <Input
-              value={question}
-              onChangeText={setQuestion}
               flex={1}
-              size={"$4"}
+              onChangeText={setQuestion}
               placeholder={`Enter your question`}
+              size={"$4"}
+              value={question}
             />
             <Form.Trigger asChild disabled={loading}>
               <Button icon={loading ? () => <Spinner /> : undefined}>
