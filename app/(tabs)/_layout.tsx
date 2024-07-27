@@ -2,9 +2,9 @@ import { TabBarIcon } from "@/components/navigation/tab-bar-icon";
 import { Colors } from "@/constants/colors";
 import { useColorScheme } from "@/hooks/use-color-scheme.web";
 import { Tabs } from "expo-router";
-import React from "react";
+import React, { ReactElement } from "react";
 
-export default function TabLayout() {
+export default function TabLayout(): ReactElement {
   const colorScheme = useColorScheme();
 
   const tint =

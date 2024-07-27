@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -21,7 +21,7 @@ import {
 // TODO: consider switching to claude instant, or something cheap
 // const HAIKU_MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
 
-export default function HomeScreen() {
+export default function HomeScreen(): ReactElement {
   const [loading, setLoading] = useState<boolean>(false);
   const [question, setQuestion] = useState<string>("");
   const [summary, setSummary] = useState<string>("");
@@ -52,7 +52,7 @@ export default function HomeScreen() {
 
   // const command = new ConverseCommand(params);
 
-  const sendToBedrock = async () => {
+  const sendToBedrock = async (): Promise<undefined> => {
     try {
       // const response: ConverseCommandOutput = await client.send(command);
       // const messages = response.output?.message?.content ?? [];
@@ -69,7 +69,7 @@ export default function HomeScreen() {
   useEffect(() => {
     if (loading) {
       const timer = setTimeout(() => setLoading(false), 2000);
-      return () => {
+      return (): undefined => {
         clearTimeout(timer);
       };
     }

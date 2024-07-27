@@ -4,9 +4,10 @@ import ParallaxScrollView from "@/components/parallax-scroll-view";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { ReactElement } from "react";
 import { Image, Platform, StyleSheet } from "react-native";
 
-export default function TabTwoScreen() {
+export default function TabTwoScreen(): ReactElement {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ dark: "#353636", light: "#D0D0D0" }}

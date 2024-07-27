@@ -39,7 +39,8 @@ export default [
     },
     rules: {
       "@typescript-eslint/switch-exhaustiveness-check": "error",
-    }
+      "@typescript-eslint/explicit-function-return-type": "error",
+    },
   },
   {
     ignores: [".expo", "**/node_modules"],

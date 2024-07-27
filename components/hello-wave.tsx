@@ -1,4 +1,5 @@
 import { ThemedText } from "@/components/themed-text";
+import { ReactElement } from "react";
 import { StyleSheet } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -8,7 +9,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-export function HelloWave() {
+export function HelloWave(): ReactElement {
   const rotationAnimation = useSharedValue(0);
 
   rotationAnimation.value = withRepeat(

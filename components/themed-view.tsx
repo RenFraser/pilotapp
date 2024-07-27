@@ -1,4 +1,5 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
+import { ReactElement } from "react";
 import { View, type ViewProps } from "react-native";
 
 export type ThemedViewProps = {
@@ -11,7 +12,7 @@ export function ThemedView({
   lightColor,
   style,
   ...otherProps
-}: ThemedViewProps) {
+}: ThemedViewProps): ReactElement {
   const backgroundColor = useThemeColor(
     { dark: darkColor, light: lightColor },
     "background",

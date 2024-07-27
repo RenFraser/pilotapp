@@ -3,7 +3,7 @@ import "@tamagui/core/reset.css";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 import "react-native-get-random-values";
 import "react-native-reanimated"; // polyfill
 import "react-native-url-polyfill/auto"; // polyfill
@@ -16,7 +16,7 @@ globalThis.ReadableStream = ReadableStream;
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+export default function RootLayout(): ReactElement | undefined {
   const [loaded] = useFonts({
     // TODO: convert these to imports
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"), // eslint-disable-line @typescript-eslint/no-require-imports

@@ -2,13 +2,13 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { Colors } from "@/constants/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, ReactElement, useState } from "react";
 import { StyleSheet, TouchableOpacity, useColorScheme } from "react-native";
 
 export function Collapsible({
   children,
   title,
-}: { title: string } & PropsWithChildren) {
+}: { title: string } & PropsWithChildren): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useColorScheme() ?? "light";
 

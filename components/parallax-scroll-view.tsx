@@ -20,7 +20,7 @@ export default function ParallaxScrollView({
   children,
   headerBackgroundColor,
   headerImage,
-}: Props) {
+}: Props): ReactElement {
   const colorScheme = useColorScheme() ?? "light";
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
