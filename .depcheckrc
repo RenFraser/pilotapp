@@ -1,0 +1,9 @@
+skip-missing: true
+ignores: [
+    "rimraf",
+    "expo-dev-client",
+    "expo-system-ui",
+    "@aws-sdk/client-bedrock-runtime",
+    "@types/jest",
+    "metro"
+]
