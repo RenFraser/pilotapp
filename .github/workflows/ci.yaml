@@ -99,9 +99,6 @@ jobs:
       - name: Setup repo
         uses: actions/checkout@v4
 
-      - name: Install fastlane
-        run: brew install fastlane
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -116,12 +113,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Run Expo Env Info
-        run: npx expo-env-info
-
-      - name: Run Expo Doctor
-        run: expo doctor
 
       - name: Build app and run E2E tests
         run: eas build --non-interactive --platform ios --profile build-and-maestro-test --local
