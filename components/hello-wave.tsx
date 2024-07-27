@@ -1,4 +1,4 @@
-import { ThemedText } from "@/components/ThemedText";
+import { ThemedText } from "@/components/themed-text";
 import { StyleSheet } from "react-native";
 import Animated, {
   useAnimatedStyle,

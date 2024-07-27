@@ -1,6 +1,6 @@
 import type { PropsWithChildren, ReactElement } from "react";
 
-import { ThemedView } from "@/components/ThemedView";
+import { ThemedView } from "@/components/themed-view";
 import { StyleSheet, useColorScheme } from "react-native";
 import Animated, {
   interpolate,

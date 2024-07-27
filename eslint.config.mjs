@@ -7,6 +7,7 @@ import globals from "globals";
 import depend from "eslint-plugin-depend";
 import pluginPromise from "eslint-plugin-promise";
 import perfectionist from "eslint-plugin-perfectionist";
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 
 // TODO: add react recommended
 export default [
@@ -16,16 +17,18 @@ export default [
   depend.configs["flat/recommended"], // prevents using redundant 3rd party libs for built-ins or popular libs
   pluginPromise.configs["flat/recommended"], // enforce best practices when using promises
   perfectionist.configs["recommended-natural"], // sorts all collections. Arrays, props, imports etc.
+  eslintPluginUnicorn.configs["flat/recommended"],
   {
-    ignores: [".expo", "**/node_modules"],
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.builtin,
       },
     },
   },
   {
+    ignores: [".expo", "**/node_modules"],
     plugins: {
       prettier,
       expo,
@@ -48,6 +51,10 @@ export default [
           forbid: [">", "}"],
         },
       ],
+      "unicorn/prefer-module": "off", // covered by typescript eslint
+      "unicorn/prevent-abbreviations": "off", // annoying
+      "unicorn/no-useless-undefined": "off", // incompatible with typescript TS7030, returns are enforced, even if it's a return undefined
+      "unicorn/no-abusive-eslint-disable": "off", // doesn't seem to respect ignore patterns? It's firing on an ignored file.
     },
   },
 ];

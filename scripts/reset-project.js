@@ -7,8 +7,8 @@
  */
 
 // TODO: convert these to imports or delete this file
-const fs = require("fs"); // eslint-disable-line @typescript-eslint/no-require-imports
-const path = require("path"); // eslint-disable-line @typescript-eslint/no-require-imports
+const fs = require("node:fs"); // eslint-disable-line @typescript-eslint/no-require-imports
+const path = require("node:path"); // eslint-disable-line @typescript-eslint/no-require-imports
 
 const root = process.cwd();
 const oldDirPath = path.join(root, "app");
