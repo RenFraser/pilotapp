@@ -17,6 +17,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          // eslint-disable-next-line sonarjs/no-unstable-nested-components
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               color={color}
@@ -29,6 +30,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="explore"
         options={{
+          // eslint-disable-next-line sonarjs/no-unstable-nested-components
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               color={color}

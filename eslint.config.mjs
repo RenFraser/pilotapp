@@ -7,7 +7,7 @@ import globals from "globals";
 import depend from "eslint-plugin-depend";
 import pluginPromise from "eslint-plugin-promise";
 import perfectionist from "eslint-plugin-perfectionist";
-import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import sonarjs from "eslint-plugin-sonarjs";
 
 // TODO: add react recommended
@@ -26,6 +26,15 @@ export default [
         ...globals.browser,
         ...globals.node,
         ...globals.builtin,
+      },
+    },
+  },
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: import.meta.dirname,
       },
     },
   },
@@ -57,6 +66,10 @@ export default [
       "unicorn/prevent-abbreviations": "off", // annoying
       "unicorn/no-useless-undefined": "off", // incompatible with typescript TS7030, returns are enforced, even if it's a return undefined
       "unicorn/no-abusive-eslint-disable": "off", // doesn't seem to respect ignore patterns? It's firing on an ignored file.
+      "sonarjs/todo-tag": "off", // sometimes I like to use todos
+      "sonarjs/fixme-tag": "off", // sometimes I like to use fixmes
+      "sonarjs/no-commented-code": "off", // TODO: turn this back on after bedrock is sorted
+      "sonarjs/no-misused-promises": "off", // TODO: I can't figure this one out? Looks like imported libs must get their signatures perfect to allow async functions on props?
     },
   },
 ];

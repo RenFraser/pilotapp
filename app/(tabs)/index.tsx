@@ -77,6 +77,8 @@ export default function HomeScreen() {
     return undefined;
   }, [loading]);
 
+  const btnIcon = loading ? <Spinner /> : undefined;
+
   return (
     <XStack
       alignSelf="center"
@@ -121,9 +123,7 @@ export default function HomeScreen() {
               value={question}
             />
             <Form.Trigger asChild disabled={loading}>
-              <Button icon={loading ? () => <Spinner /> : undefined}>
-                Submit
-              </Button>
+              <Button icon={btnIcon}>Submit</Button>
             </Form.Trigger>
           </XStack>
         </Form>
