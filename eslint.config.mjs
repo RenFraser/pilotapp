@@ -37,6 +37,9 @@ export default [
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    rules: {
+      "@typescript-eslint/switch-exhaustiveness-check": "error",
+    }
   },
   {
     ignores: [".expo", "**/node_modules"],
@@ -70,6 +73,8 @@ export default [
       "sonarjs/fixme-tag": "off", // sometimes I like to use fixmes
       "sonarjs/no-commented-code": "off", // TODO: turn this back on after bedrock is sorted
       "sonarjs/no-misused-promises": "off", // TODO: I can't figure this one out? Looks like imported libs must get their signatures perfect to allow async functions on props?
+      "sonarjs/prefer-enum-initializers": "off", // FIXME: turn this on - it's a broken check from the alpha version
+      "sonarjs/sonar-no-fallthrough": "off", // FIXME: turn this on - it's a broken check from the alpha version
     },
   },
 ];
