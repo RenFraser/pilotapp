@@ -4,12 +4,15 @@ import react from "eslint-plugin-react";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import globals from "globals";
+import depend from 'eslint-plugin-depend';
+
 
 // TODO: add react recommended
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   react.configs.flat.recommended,
+  depend.configs["flat/recommended"], // prevents using redundant 3rd party libs for built-ins or popular libs
   {
     ignores: [".expo", "**/node_modules"],
     languageOptions: {
