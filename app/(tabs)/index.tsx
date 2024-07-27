@@ -74,6 +74,8 @@ export default function HomeScreen() {
         clearTimeout(timer);
       };
     }
+
+    return undefined;
   }, [loading]);
 
   return (
