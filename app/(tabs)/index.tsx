@@ -20,7 +20,7 @@ import React, { useEffect, useState } from "react";
 // import { Message } from "@aws-sdk/client-bedrock-runtime/dist-types/models/models_0";
 
 // TODO: consider switching to claude instant, or something cheap
-const HAIKU_MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
+// const HAIKU_MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
 
 export default function HomeScreen() {
   const [loading, setLoading] = useState<boolean>(false);
