@@ -50,11 +50,27 @@ jobs:
           NODE_AUTH_TOKEN: ${{ github.token }}
       - run: npm run format
 
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: "https://npm.pkg.github.com"
+      - run: npm ci --ignore-scripts
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
+      - run: npm run compile
+
   dependabot:
     permissions: write-all
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
-    needs: [security, lint, format]
+    needs: [security, lint, format, compile]
     steps:
       - name: Dependabot metadata
         id: metadata
