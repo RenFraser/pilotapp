@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   audit:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -93,7 +93,7 @@ jobs:
       - run: npm run test
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: [audit, lint, format, compile, dependencies, test]
     steps:
       - name: Setup repo
@@ -118,7 +118,7 @@ jobs:
         run: eas build --non-interactive --platform ios --profile build-and-maestro-test --local
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: [build]
     steps:
       - name: Setup repo
