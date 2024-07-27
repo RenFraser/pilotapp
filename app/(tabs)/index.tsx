@@ -11,10 +11,16 @@ import {
 } from "tamagui";
 
 import React, { useEffect, useState } from "react";
+// import {
+//   BedrockRuntimeClient,
+//   ConverseCommand,
+//   ConverseCommandOutput,
+// } from "@aws-sdk/client-bedrock-runtime";
+// import { ConverseCommandInput } from "@aws-sdk/client-bedrock-runtime/dist-types/commands/ConverseCommand";
+// import { Message } from "@aws-sdk/client-bedrock-runtime/dist-types/models/models_0";
 
-// export const CLAUDE_MAX_TOKENS = 4096;
-// export const APPLICATION_JSON = "application/json";
-// export const BEDROCK_VERSION = "bedrock-2023-05-31";
+// TODO: consider switching to claude instant, or something cheap
+const HAIKU_MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
 
 export default function HomeScreen() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -33,43 +39,27 @@ export default function HomeScreen() {
   //   },
   // });
 
-  // TODO: consider switching to claude instant, or something cheap
-  // const HAIKU_MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
-
   // TODO: optimise claude's message so that it's given a template and provides only the filled responses.
-  // const body = JSON.stringify({
-  //   messages: [
-  //     {
-  //       role: "user",
-  //       content: question,
-  //     },
-  //   ],
-  //   anthropic_version: BEDROCK_VERSION,
-  //   max_tokens: CLAUDE_MAX_TOKENS,
-  //   system: "", // TODO:
-  // });
-
-  // const params = {
-  //   modelId: HAIKU_MODEL_ID,
-  //   contentType: APPLICATION_JSON,
-  //   accept: APPLICATION_JSON,
-  //   body,
+  // TODO: extract to a hook and also play around with the API
+  // const message: Message = {
+  //   role: "user",
+  //   content: [{ text: question }],
   // };
 
-  // const request = new InvokeModelCommand(params);
+  // const params: ConverseCommandInput = {
+  //   modelId: HAIKU_MODEL_ID,
+  //   messages: [message],
+  // };
+
+  // const command = new ConverseCommand(params);
 
   const sendToBedrock = async () => {
-    console.log("in sending...");
     try {
-      console.log("send now");
-      // const response: InvokeModelCommandOutput = await client.send(request);
-
-      // const decodedResponse = new TextDecoder().decode(response.body);
-
-      // const reply = JSON.parse(decodedResponse || "{}");
-      // const claudesReply = reply.content[0].text;
-      // setSummary(claudesReply);
-      setSummary("test");
+      // const response: ConverseCommandOutput = await client.send(command);
+      // const messages = response.output?.message?.content ?? [];
+      // const msg = messages.length > 0 ? messages[0]?.text : "UNKNOWN";
+      // setSummary(msg ?? "UNKNOWN");
+      setSummary("TODO");
     } catch (error) {
       console.error(error);
     } finally {
@@ -116,7 +106,6 @@ export default function HomeScreen() {
         <Form
           gap="$2"
           onSubmit={() => {
-            setQuestion("test question");
             setPages([1, 2]);
             setLoading(true);
             sendToBedrock();

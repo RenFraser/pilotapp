@@ -18,7 +18,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@aws-sdk/client-bedrock-runtime": "^3.574.0",
+    "@aws-sdk/client-bedrock-runtime": "^3.620.0",
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^6.1.18",
     "@tamagui/config": "^1.104.2",
