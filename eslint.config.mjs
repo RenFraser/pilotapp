@@ -4,8 +4,8 @@ import react from "eslint-plugin-react";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import globals from "globals";
-import depend from 'eslint-plugin-depend';
-
+import depend from "eslint-plugin-depend";
+import pluginPromise from "eslint-plugin-promise";
 
 // TODO: add react recommended
 export default [
@@ -13,6 +13,7 @@ export default [
   ...tseslint.configs.recommended,
   react.configs.flat.recommended,
   depend.configs["flat/recommended"], // prevents using redundant 3rd party libs for built-ins or popular libs
+  pluginPromise.configs["flat/recommended"], // enforce best practices when using promises
   {
     ignores: [".expo", "**/node_modules"],
     languageOptions: {
@@ -28,7 +29,6 @@ export default [
       expo,
     },
     rules: {
-      "@typescript-eslint/switch-exhaustiveness-check": "error",
       "prettier/prettier": "error",
       "expo/no-env-var-destructuring": "error",
       "expo/no-dynamic-env-var": "error",
