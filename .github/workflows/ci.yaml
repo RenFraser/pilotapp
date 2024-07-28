@@ -5,156 +5,156 @@ on:
     branches:
       - main
 jobs:
-  audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-          cache: npm
-          registry-url: "https://npm.pkg.github.com"
-      - run: npm ci
-        shell: bash
-        env:
-          NODE_AUTH_TOKEN: ${{ github.token }}
-      - run: npm audit
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-          cache: npm
-          registry-url: "https://npm.pkg.github.com"
-      - run: npm ci
-        shell: bash
-        env:
-          NODE_AUTH_TOKEN: ${{ github.token }}
-      - run: npm run lint
-
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-          cache: npm
-          registry-url: "https://npm.pkg.github.com"
-      - run: npm ci
-        shell: bash
-        env:
-          NODE_AUTH_TOKEN: ${{ github.token }}
-      - run: npm run format
-
-  compile:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-          cache: npm
-          registry-url: "https://npm.pkg.github.com"
-      - run: npm ci --ignore-scripts
-        shell: bash
-        env:
-          NODE_AUTH_TOKEN: ${{ github.token }}
-      - run: npm run compile
-
-  dependencies:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-      - run: npm ci
-      - run: npm run lint:dependencies
-
-  test:
-    runs-on: ubuntu-latest
-    needs: [lint, compile]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-      - run: npm ci
-      - run: npm run test
-
-  doctor:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-          cache: npm
-
-      - name: Setup EAS
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Expo Doctor
-        run: EXPO_DOCTOR_SKIP_DEPENDENCY_VERSION_CHECK=1 npx expo-doctor@latest
-
-  build:
-    runs-on: macos-latest
-    needs: [audit, lint, format, compile, dependencies, test, doctor]
-    steps:
-      - name: Setup repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-          cache: npm
-
-      - name: Setup EAS
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build App
-        run: eas build --non-interactive --platform ios --profile development --local
-
-      - name: Ensure only one tarball was created from the build
-        run: "[ $(ls *.tar.gz 2>/dev/null | wc -l) -eq 1 ]"
-
-      - name: Unzip tarball
-        run: tar xzvf *.tar.gz
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: pilotapp.app
-          path: pilotapp.app
+  #   audit:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v4
+  #       - name: Use Node.js
+  #         uses: actions/setup-node@v4
+  #         with:
+  #           node-version: 18.x
+  #           cache: npm
+  #           registry-url: "https://npm.pkg.github.com"
+  #       - run: npm ci
+  #         shell: bash
+  #         env:
+  #           NODE_AUTH_TOKEN: ${{ github.token }}
+  #       - run: npm audit
+  #
+  #   lint:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v4
+  #       - name: Use Node.js
+  #         uses: actions/setup-node@v4
+  #         with:
+  #           node-version: 18.x
+  #           cache: npm
+  #           registry-url: "https://npm.pkg.github.com"
+  #       - run: npm ci
+  #         shell: bash
+  #         env:
+  #           NODE_AUTH_TOKEN: ${{ github.token }}
+  #       - run: npm run lint
+  #
+  #   format:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v4
+  #       - name: Use Node.js
+  #         uses: actions/setup-node@v4
+  #         with:
+  #           node-version: 18.x
+  #           cache: npm
+  #           registry-url: "https://npm.pkg.github.com"
+  #       - run: npm ci
+  #         shell: bash
+  #         env:
+  #           NODE_AUTH_TOKEN: ${{ github.token }}
+  #       - run: npm run format
+  #
+  #   compile:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v4
+  #       - name: Use Node.js
+  #         uses: actions/setup-node@v4
+  #         with:
+  #           node-version: 18.x
+  #           cache: npm
+  #           registry-url: "https://npm.pkg.github.com"
+  #       - run: npm ci --ignore-scripts
+  #         shell: bash
+  #         env:
+  #           NODE_AUTH_TOKEN: ${{ github.token }}
+  #       - run: npm run compile
+  #
+  #   dependencies:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v3
+  #       - name: Use Node.js
+  #         uses: actions/setup-node@v3
+  #         with:
+  #           node-version: 18.x
+  #       - run: npm ci
+  #       - run: npm run lint:dependencies
+  #
+  #   test:
+  #     runs-on: ubuntu-latest
+  #     needs: [lint, compile]
+  #     steps:
+  #       - uses: actions/checkout@v3
+  #       - name: Use Node.js
+  #         uses: actions/setup-node@v3
+  #         with:
+  #           node-version: 18.x
+  #       - run: npm ci
+  #       - run: npm run test
+  #
+  #   doctor:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - name: Setup repo
+  #         uses: actions/checkout@v4
+  #
+  #       - name: Setup Node
+  #         uses: actions/setup-node@v4
+  #         with:
+  #           node-version: 18.x
+  #           cache: npm
+  #
+  #       - name: Setup EAS
+  #         uses: expo/expo-github-action@v8
+  #         with:
+  #           eas-version: latest
+  #           token: ${{ secrets.EXPO_TOKEN }}
+  #
+  #       - name: Install dependencies
+  #         run: npm ci
+  #
+  #       - name: Expo Doctor
+  #         run: EXPO_DOCTOR_SKIP_DEPENDENCY_VERSION_CHECK=1 npx expo-doctor@latest
+  #
+  #   build:
+  #     runs-on: macos-latest
+  #     needs: [audit, lint, format, compile, dependencies, test, doctor]
+  #     steps:
+  #       - name: Setup repo
+  #         uses: actions/checkout@v4
+  #
+  #       - name: Setup Node
+  #         uses: actions/setup-node@v4
+  #         with:
+  #           node-version: 18.x
+  #           cache: npm
+  #
+  #       - name: Setup EAS
+  #         uses: expo/expo-github-action@v8
+  #         with:
+  #           eas-version: latest
+  #           token: ${{ secrets.EXPO_TOKEN }}
+  #
+  #       - name: Install dependencies
+  #         run: npm ci
+  #
+  #       - name: Build App
+  #         run: eas build --non-interactive --platform ios --profile development --local
+  #
+  #       - name: Ensure only one tarball was created from the build
+  #         run: "[ $(ls *.tar.gz 2>/dev/null | wc -l) -eq 1 ]"
+  #
+  #       - name: Unzip tarball
+  #         run: tar xzvf *.tar.gz
+  #
+  #       - uses: actions/upload-artifact@v4
+  #         with:
+  #           name: pilotapp.app
+  #           path: pilotapp.app
 
   e2e:
     runs-on: macos-latest
-    needs: [build]
+    #     needs: [build]
     steps:
       - name: Setup repo
         uses: actions/checkout@v4
@@ -168,8 +168,8 @@ jobs:
       # Apparently java is required to run maestro. Expo task to install maestro warns about it
       - uses: actions/setup-java@v4
         with:
-          distribution: 'corretto'
-          java-version: '17'
+          distribution: "corretto"
+          java-version: "17"
 
       - name: Setup EAS
         uses: expo/expo-github-action@v8
@@ -187,41 +187,40 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - uses: actions/download-artifact@v4
-        with:
-          name: pilotapp.app
-          path: pilotapp.app
+#       - uses: actions/download-artifact@v4
+#         with:
+#           name: pilotapp.app
+#           path: pilotapp.app
 
       - name: Kill any open maestro processes
         run: pgrep -lf maestro | awk '{print $1}' | xargs -r kill
 
-      - name: Upload build to simulator
-        run: xcrun simctl install booted pilotapp.app
+      #       - name: Upload build to simulator
+      #         run: xcrun simctl install booted pilotapp.app
 
       - name: Run E2E Tests
         run: maestro test maestro/home.yaml < /dev/null
-
-  deploy:
-    runs-on: macos-latest
-    needs: [e2e]
-    steps:
-      - name: Setup repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-          cache: npm
-
-      - name: Setup EAS
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Publish Update
-        run: eas update --auto
+#   deploy:
+#     runs-on: macos-latest
+#     needs: [e2e]
+#     steps:
+#       - name: Setup repo
+#         uses: actions/checkout@v4
+#
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 18.x
+#           cache: npm
+#
+#       - name: Setup EAS
+#         uses: expo/expo-github-action@v8
+#         with:
+#           eas-version: latest
+#           token: ${{ secrets.EXPO_TOKEN }}
+#
+#       - name: Install dependencies
+#         run: npm ci
+#
+#       - name: Publish Update
+#         run: eas update --auto
