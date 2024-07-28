@@ -10,9 +10,17 @@
         "simulator": true
       }
     },
-    "build-and-maestro-test": {
+    "maestro-test": {
       "withoutCredentials": true,
-      "config": "build-and-maestro-test.yaml",
+      "config": "maestro-test.yaml",
+      "ios": {
+        "simulator": true,
+        "image": "latest"
+      }
+    },
+    "pre-test": {
+      "withoutCredentials": true,
+      "config": "pre-test.yaml",
       "ios": {
         "simulator": true,
         "image": "latest"

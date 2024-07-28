@@ -1,0 +1,5 @@
+build:
+  name: Create a build and run Maestro tests on it
+  steps:
+    - eas/install_maestro
+    - eas/start_ios_simulator
