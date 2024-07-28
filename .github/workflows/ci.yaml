@@ -189,8 +189,7 @@ jobs:
         run: xcrun simctl install booted pilotapp.app
 
       - name: Run E2E Tests
-        run: $HOME/.maestro/bin/maestro test home.yaml
-        working-directory: maestro
+        run: $HOME/.maestro/bin/maestro test maestro/home.yaml
 
   deploy:
     runs-on: macos-latest
