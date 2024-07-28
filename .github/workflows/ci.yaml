@@ -165,6 +165,12 @@ jobs:
           node-version: 18.x
           cache: npm
 
+      # Apparently java is required to run maestro. Expo task to install maestro warns about it
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '17'
+
       - name: Setup EAS
         uses: expo/expo-github-action@v8
         with:
@@ -185,6 +191,9 @@ jobs:
         with:
           name: pilotapp.app
           path: pilotapp.app
+
+      - name: Kill any open maestro processes
+        run: pgrep -lf maestro | awk '{print $1}' | xargs -r kill
 
       - name: Upload build to simulator
         run: xcrun simctl install booted pilotapp.app
