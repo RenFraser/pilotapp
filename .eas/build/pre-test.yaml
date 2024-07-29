@@ -1,4 +1,0 @@
-build:
-  name: Start the ios simulator
-  steps:
-    - eas/start_ios_simulator

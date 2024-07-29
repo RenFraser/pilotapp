@@ -119,6 +119,8 @@ jobs:
   build:
     runs-on: macos-latest
     needs: [audit, lint, format, compile, dependencies, test, doctor]
+    env:
+      EAS_LOCAL_BUILD_WORKINGDIR: build
     steps:
       - name: Setup repo
         uses: actions/checkout@v4
@@ -141,20 +143,16 @@ jobs:
       - name: Build App
         run: eas build --non-interactive --platform ios --profile development --local
 
-      - name: Ensure only one tarball was created from the build
-        run: "[ $(ls *.tar.gz 2>/dev/null | wc -l) -eq 1 ]"
-
-      - name: Unzip tarball
-        run: tar xzvf *.tar.gz
-
       - uses: actions/upload-artifact@v4
         with:
-          name: pilotapp.app
-          path: pilotapp.app
+          name: build
+          path: build
 
   e2e:
     runs-on: macos-latest
     needs: [build]
+    env:
+      EAS_LOCAL_BUILD_WORKINGDIR: build
     steps:
       - name: Setup repo
         uses: actions/checkout@v4
@@ -165,11 +163,10 @@ jobs:
           node-version: 18.x
           cache: npm
 
-      # Apparently java is required to run maestro. Expo task to install maestro warns about it
-      - uses: actions/setup-java@v4
+      - uses: actions/download-artifact@v4
         with:
-          distribution: "corretto"
-          java-version: "17"
+          name: build
+          path: build
 
       - name: Setup EAS
         uses: expo/expo-github-action@v8
@@ -177,20 +174,8 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Install Maestro
-        run: |
-          curl -Ls "https://get.maestro.mobile.dev" | bash
-          brew tap facebook/fb
-          brew install facebook/fb/idb-companion
-          echo "$HOME/.maestro/bin" >> $GITHUB_PATH
-
       - name: Install dependencies
         run: npm ci
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: pilotapp.app
-          path: pilotapp.app
 
       - name: Start simulator
         run: eas build --non-interactive --platform ios --profile pre-test --local
