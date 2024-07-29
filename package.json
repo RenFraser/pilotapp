@@ -21,7 +21,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@aws-sdk/client-bedrock-runtime": "^3.620.0",
+    "@aws-sdk/client-bedrock-runtime": "^3.529.0",
     "@expo/vector-icons": "^14.0.2",
     "@tamagui/config": "^1.104.2",
     "expo": "~51.0.22",
@@ -33,6 +33,7 @@
     "expo-splash-screen": "~0.27.5",
     "expo-status-bar": "~1.12.1",
     "expo-system-ui": "~3.0.7",
+    "expo-updates": "~0.25.21",
     "expo-web-browser": "~13.0.3",
     "react": "18.2.0",
     "react-native": "0.74.3",
@@ -42,8 +43,7 @@
     "react-native-screens": "3.32.0",
     "react-native-url-polyfill": "^2.0.0",
     "tamagui": "^1.104.2",
-    "text-encoding-polyfill": "^0.6.7",
-    "expo-updates": "~0.25.21"
+    "text-encoding-polyfill": "^0.6.7"
   },
   "devDependencies": {
     "@babel/core": "^7.24.9",
