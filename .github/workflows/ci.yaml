@@ -192,6 +192,9 @@ jobs:
           name: pilotapp.app
           path: pilotapp.app
 
+      - name: Start simulator
+        run: eas build --non-interactive --platform ios --profile pre-test --local
+
       - name: Kill any open maestro processes
         run: pgrep -lf maestro | awk '{print $1}' | xargs -r kill
 
