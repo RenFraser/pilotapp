@@ -23,7 +23,7 @@
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.529.0",
     "@expo/vector-icons": "^14.0.2",
-    "@tamagui/config": "^1.104.2",
+    "@tamagui/config": "^1.105.5",
     "expo": "~51.0.22",
     "expo-constants": "~16.0.2",
     "expo-dev-client": "~4.0.20",
