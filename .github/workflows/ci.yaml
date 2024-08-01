@@ -9,13 +9,9 @@ on:
     branches:
       - main
 
-# I want to run this on all merged PRs, not just pushes.
-env:
-  SHOULD_RUN: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
-
 jobs:
   audit:
-    if: ${{ env.SHOULD_RUN == 'true' }}
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +28,7 @@ jobs:
       - run: npm audit
 
   lint:
-    if: ${{ env.SHOULD_RUN == 'true' }}
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -49,7 +45,7 @@ jobs:
       - run: npm run lint
 
   format:
-    if: ${{ env.SHOULD_RUN == 'true' }}
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -66,7 +62,7 @@ jobs:
       - run: npm run format
 
   compile:
-    if: ${{ env.SHOULD_RUN == 'true' }}
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -83,7 +79,7 @@ jobs:
       - run: npm run compile
 
   dependencies:
-    if: ${{ env.SHOULD_RUN == 'true' }}
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -95,7 +91,7 @@ jobs:
       - run: npm run lint:dependencies
 
   test:
-    if: ${{ env.SHOULD_RUN == 'true' }}
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     needs: [lint, compile]
     steps:
@@ -108,7 +104,7 @@ jobs:
       - run: npm run test
 
   build:
-    if: ${{ env.SHOULD_RUN == 'true' }}
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: macos-latest
     needs: [audit, lint, format, compile, dependencies, test]
     steps:
@@ -137,7 +133,7 @@ jobs:
         run: eas build --non-interactive --platform ios --profile build-and-maestro-test --local
 
   deploy:
-    if: ${{ env.SHOULD_RUN == 'true' }}
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: macos-latest
     needs: [build]
     steps:
