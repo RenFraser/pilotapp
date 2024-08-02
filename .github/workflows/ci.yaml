@@ -6,8 +6,6 @@ on:
       - main
   pull_request:
     types: [closed]
-    branches:
-      - main
 
 env:
   NODE_VERSION: "18.x"
