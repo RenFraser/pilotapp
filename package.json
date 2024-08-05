@@ -23,7 +23,7 @@
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.622.0",
     "@expo/vector-icons": "^14.0.2",
-    "@tamagui/config": "^1.106.0",
+    "@tamagui/config": "^1.108.0",
     "expo": "~51.0.24",
     "expo-constants": "~16.0.2",
     "expo-dev-client": "~4.0.21",
@@ -42,7 +42,7 @@
     "react-native-safe-area-context": "4.10.8",
     "react-native-screens": "3.33.0",
     "react-native-url-polyfill": "^2.0.0",
-    "tamagui": "^1.106.0",
+    "tamagui": "^1.108.0",
     "text-encoding-polyfill": "^0.6.7"
   },
   "devDependencies": {
