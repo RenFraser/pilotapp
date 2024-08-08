@@ -24,7 +24,7 @@
     "@aws-sdk/client-bedrock-runtime": "^3.624.0",
     "@expo/vector-icons": "^14.0.2",
     "@tamagui/config": "^1.108.2",
-    "expo": "~51.0.24",
+    "expo": "~51.0.25",
     "expo-constants": "~16.0.2",
     "expo-dev-client": "~4.0.21",
     "expo-font": "~12.0.9",
